@@ -2,10 +2,10 @@ package org.cagnulein.android_remote;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
+//import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
+//import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
@@ -53,7 +53,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Level;
+//import java.util.logging.Level;
 
 import io.github.muntashirakon.adb.AbsAdbConnectionManager;
 import io.github.muntashirakon.adb.AdbPairingRequiredException;
@@ -61,7 +61,7 @@ import io.github.muntashirakon.adb.AdbStream;
 import io.github.muntashirakon.adb.LocalServices;
 import io.github.muntashirakon.adb.android.AdbMdns;
 import io.github.muntashirakon.adb.android.AndroidUtils;
-import okhttp3.*;
+//import okhttp3.*;
 
 public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, SensorEventListener {
     private static final String PREFERENCE_KEY = "default";
@@ -175,8 +175,8 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
 
         final Button startButton = findViewById(R.id.button_start);
         final Button pairButton = findViewById(R.id.button_pair);
-        final Button patreonButton = findViewById(R.id.button_patreon);
-        final Button patreonOK = findViewById(R.id.button_confirmpatreon);
+        //final Button patreonButton = findViewById(R.id.button_patreon);
+        //final Button patreonOK = findViewById(R.id.button_confirmpatreon);
         final Button discoverhostportButton = findViewById(R.id.button_discover_hostport);
         AssetManager assetManager = getAssets();
         try {
@@ -188,7 +188,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
             Log.e("Asset Manager", e.getMessage());
         }
         sendCommands = new SendCommands();
-
+/*
         patreonButton.setOnClickListener(v -> {
             executor.submit(() -> {
                 String url = "https://www.patreon.com/cagnulein";
@@ -212,6 +212,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
                     })
                     .show();
         });
+*/
 
         pairButton.setOnClickListener(v -> {
             executor.submit(() -> {
@@ -246,8 +247,8 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
         });
         get_saved_preferences();
 
-        licenseRequest();
-        schedulePop();
+//        licenseRequest();
+//        schedulePop();
 
         discoverhostportButton.setOnClickListener(v -> {
             AtomicInteger atomicPort = new AtomicInteger(-1);
@@ -314,7 +315,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
 
     public void get_saved_preferences(){
         this.context = this;
-        final EditText editText_patreon = findViewById(R.id.editText_patreon);
+//        final EditText editText_patreon = findViewById(R.id.editText_patreon);
         final EditText editTextServerHost = findViewById(R.id.editText_server_host);
         final EditText editTextServerPort = findViewById(R.id.editText_server_port);
         final EditText editTextPairPort = findViewById(R.id.editText_pair_port);
@@ -344,7 +345,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
         });
 
         // last one so the edit of this will not corrupt anything
-        editText_patreon.setText(context.getSharedPreferences(PREFERENCE_KEY, 0).getString("Patreon Email", ""));
+//        editText_patreon.setText(context.getSharedPreferences(PREFERENCE_KEY, 0).getString("Patreon Email", ""));
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -443,7 +444,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
 
     private void getAttributes() {
 
-        final EditText editText_patreon = findViewById(R.id.editText_patreon);
+        //final EditText editText_patreon = findViewById(R.id.editText_patreon);
         final EditText editTextServerHost = findViewById(R.id.editText_server_host);
         final EditText editTextServerPort = findViewById(R.id.editText_server_port);
         final EditText editTextPairPort = findViewById(R.id.editText_pair_port);
@@ -452,7 +453,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
         serverPort = editTextServerPort.getText().toString();
         pairPort = editTextPairPort.getText().toString();
         pairCode = editTextPairCode.getText().toString();
-        context.getSharedPreferences(PREFERENCE_KEY, 0).edit().putString("Patreon Email", editText_patreon.getText().toString()).apply();
+        //context.getSharedPreferences(PREFERENCE_KEY, 0).edit().putString("Patreon Email", editText_patreon.getText().toString()).apply();
         context.getSharedPreferences(PREFERENCE_KEY, 0).edit().putString("Server Address", serverAdr).apply();
         context.getSharedPreferences(PREFERENCE_KEY, 0).edit().putString("Server Port", serverPort).apply();
         final Spinner videoResolutionSpinner = findViewById(R.id.spinner_video_resolution);
@@ -643,6 +644,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
 
     private Handler handlerPopup = new Handler(Looper.getMainLooper());
 
+/*
     private void licenseReply(String response) {
         Log.d("HomeActivity", response);
         if (response.contains("OK")) {
@@ -722,6 +724,7 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
             licenseRequest();
         }
     };
+*/
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
