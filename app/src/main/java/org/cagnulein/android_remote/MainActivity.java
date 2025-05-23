@@ -143,14 +143,14 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
     public MainActivity() {
     }
 
-    private OkHttpClient client;
+//    private OkHttpClient client;
     private Handler handler;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        client = new OkHttpClient();
+//        client = new OkHttpClient();
         handler = new Handler(Looper.getMainLooper());
 
         if (first_time) {
