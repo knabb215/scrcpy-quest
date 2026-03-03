@@ -642,8 +642,6 @@ public class MainActivity extends Activity implements Scrcpy.ServiceCallbacks, S
         }
     }
 
-    private Handler handlerPopup = new Handler(Looper.getMainLooper());
-
 /*
     private void licenseReply(String response) {
         Log.d("HomeActivity", response);
